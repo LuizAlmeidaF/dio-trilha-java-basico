@@ -20,6 +20,22 @@ public class ContaTerminal {
         receberInformacoes();
         
         System.out.println(String.format("Olá %s, obrigado por criar uma conta em nosso banco, sua agência é %s, conta %s e seu saldo atual é %s e já está disponivel para saque.", name, agencia, conta, saldo));
+
+        System.out.println("Qual operação deseja realizar? \n1. Saque \n2. Deposito \n3. Transferência");
+        int operacao = scanner.nextInt();
+
+        switch (operacao){
+            case 1:
+                saque();
+                break;
+            
+            case 2:
+                deposito();
+                break;
+
+            case 3:
+                System.out.println("Essa opção ainda não está no momento em breve essa funcionalidade vontará a funcionar.");
+        }
     }
     static void receberInformacoes (){
             System.out.println("Qual o seu nome?");
@@ -31,4 +47,20 @@ public class ContaTerminal {
             System.out.println("Saldo:");
             saldo = scanner.nextDouble();
         }
+        
+    static void saque (){
+        System.out.println("Quanto você gostaria de sacar?");
+        double valor = scanner.nextDouble();
+        System.out.println(String.format("Você sacou %s com sucesso", valor));
+        double restante = saldo - valor;
+        System.out.println("Seu saldo atual é: " + restante);
+    }
+
+    static void deposito(){
+        System.out.println("Quanto você irá depositar?");
+        double valor = scanner.nextDouble();
+        double total = saldo + valor;
+        System.out.println(String.format("Seu depósito de %s foi realizado com sucesso, seu saldo atual é %s.", valor, total));
+    }
+
     }
