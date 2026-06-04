@@ -35,6 +35,11 @@ public class ContaTerminal {
 
             case 3:
                 System.out.println("Essa opção ainda não está no momento em breve essa funcionalidade vontará a funcionar.");
+                break;
+
+            default:
+                System.out.println("Operação Invalida.");
+        
         }
     }
     static void receberInformacoes (){
@@ -51,9 +56,13 @@ public class ContaTerminal {
     static void saque (){
         System.out.println("Quanto você gostaria de sacar?");
         double valor = scanner.nextDouble();
-        System.out.println(String.format("Você sacou %s com sucesso", valor));
-        double restante = saldo - valor;
-        System.out.println("Seu saldo atual é: " + restante);
+        if(valor > saldo){
+            System.out.println("Saldo indisponivel.");
+        }else{
+            System.out.println(String.format("Você sacou %s com sucesso", valor));
+            double restante = saldo - valor;
+            System.out.println("Seu saldo atual é: " + restante);
+        }
     }
 
     static void deposito(){
